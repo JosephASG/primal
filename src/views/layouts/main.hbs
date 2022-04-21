@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/PrimalLogoPro.png">
+    <title>Primal</title>
+    {{!-- google fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unica+One&family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    {{!-- boostrap 5 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {{!-- fontawesome --}}
+    <script src="https://kit.fontawesome.com/26b28607c6.js" crossorigin="anonymous"></script>
+    {{!-- styles --}}
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/glitch.css">
+    <link rel="stylesheet" href="/css/sticky_section.css">
+    <link rel="stylesheet" href="/css/skills.css">
+    <link rel="stylesheet" href="/css/jarallax.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/footer_social_icons.css">
+    <link rel="stylesheet" href="/css/animaciones.css">
+    <link rel="stylesheet" href="/css/preloadera.css">
+    <link rel="stylesheet" href="/css/colors.css">
+</head>
+<body>
+
+    {{!<--<div class="loader-wrapper">
+        <div class="loader2" style="border-top-color: rgba(149, 144, 144, 0.46);"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>-->}}
+
+
+    {{> navigation}}
+
+    {{> messages}}
+
+    {{{ body }}}
+
+    {{> footer}}
+    
+     <script type="module" src="/js/firebase-primal.js"></script>
+    <script type="application/javascript" src="/js/preloader.js"></script>
+    <script type="text/javascript" src="/js/menu.js"></script>
+    <script type="text/javascript" src="/js/jarallax.js"></script>
+    <script type="text/javascript" src="/js/jarallax-element.js"></script>
+    <script type="text/javascript" src="/js/vanilla-tilt.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+    <script>
+        let progress = document.getElementById('progressbar');
+        let totalHeight = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function () {
+            let progressHeight = (window.pageYOffset / totalHeight) * 100;
+            progress.style.height = progressHeight + "%";
+        }
+    </script>
+
+    <script>
+        jarallax(document.querySelectorAll('.jarallax'), {
+            speed: 0.5,
+        });
+    </script>
+
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".skill__box"), {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1,
+        });
+    </script>
+
+    <script>
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        })
+    </script>
+
+    <script>
+        var typed = new Typed(".auto_type", {
+            strings: ["Software", "Development", "Apprentice"
+            ],
+            typeSpeed: 60,
+            backSpeed: 60,
+            loop: true
+        })
+    </script>
+    <script>
+        function toggleMenu__() {
+            const menutoggle = document.querySelector(".toggle__");
+            const sidebar__ = document.querySelector(".sidebar__");
+            menutoggle.classList.toggle("active")
+            sidebar__.classList.toggle("active")
+        }
+    </script>
+    <script>
+        const position__ = document.documentElement;
+        position__.addEventListener("mousemove", e => {
+            position__.style.setProperty("--x", e.clientX + "px")
+            position__.style.setProperty("--y", e.clientY + "px")
+        })
+    </script>
+    <script>
+        function animateFrom(elem, direction) {
+            direction = direction || 1;
+            var x = 0,
+                y = direction * 100;
+            if (elem.classList.contains("gs_reveal_fromLeft")) {
+                x = -100;
+                y = 0;
+            } else if (elem.classList.contains("gs_reveal_fromRight")) {
+                x = 100;
+                y = 0;
+            }
+            elem.style.transform = "translate(" + x + "px, " + y + "px)";
+            elem.style.opacity = "0";
+            gsap.fromTo(elem, { x: x, y: y, autoAlpha: 0 }, {
+                duration: 1.25,
+                x: 0,
+                y: 0,
+                autoAlpha: 1,
+                ease: "expo",
+                overwrite: "auto"
+            });
+        }
+
+        function hide(elem) {
+            gsap.set(elem, { autoAlpha: 0 });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.utils.toArray(".gs_reveal").forEach(function (elem) {
+                hide(elem); // assure that the element is hidden when scrolled into view
+
+                ScrollTrigger.create({
+                    trigger: elem,
+                    onEnter: function () { animateFrom(elem) },
+                    onEnterBack: function () { animateFrom(elem, -1) },
+                    onLeave: function () { hide(elem) } // assure that the element is hidden when scrolled into view
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
