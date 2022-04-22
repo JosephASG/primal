@@ -13,23 +13,24 @@ router.post('/add', isLoggedIn, async (req, res) =>{
     const newLink = {
         tittle,
         url,
-        description,
-        user_id: req.user.id
+        description
+        //user_id: req.user.id
     };
     await pool.query('INSERT INTO links set ?', [newLink]);
-    req.flash('success', 'Link saved successfully');
-    res.redirect('/links');
+    req.flash('success', 'Comentario agregado con éxito');
+    res.redirect('/comments');
 })
 
 router.get('/delete/:id', isLoggedIn, async (req, res) => {
     const { id } = req.params;
     await pool.query('DELETE FROM links WHERE ID = ?', [id]);
-    req.flash('success', 'Link removed successfully')
-    res.redirect('/links');
+    req.flash('success', 'Comentario removido con éxito')
+    res.redirect('/comments');
 });
 
 router.get('/', isLoggedIn, async (req, res) =>{
-    const links = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
+    //const links = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
+    const links = await pool.query('SELECT * FROM links');
     res.render('links/list', { links })
 })
 
@@ -48,8 +49,8 @@ router.post('/edit/:id',isLoggedIn, async (req, res) => {
         url
     }
     await pool.query('UPDATE links set ? WHERE id = ?', [newLink, id]);
-    req.flash('success', 'Link updated successfully')
-    res.redirect('/links');
+    req.flash('success', 'Comentario actualizado con éxito')
+    res.redirect('/comments');
 });
 
 module.exports = router;
