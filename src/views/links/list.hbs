@@ -1,22 +1,25 @@
-<div class="container-comments">    
+<div class="container-comments">
     <div class="content-comment">
-        
-            {{#each links}}
-            <div class="card-comment skill__box">
-                            <h3 class="card-title text-uppercase">
-                                {{tittle}}
-                            </h3>
-                        <p class="m-2">{{description}}</p>
-                        <p>{{timeago created_at}}</p>
-                        <a href="/comments/delete/{{id}}" class="btn btn-danger">Borrar comentario</a>
-                        <a href="/comments/edit/{{id}}" class="btn btn-secondary">Editar</a>
-</div>
-                {{else}}
-                <div class="card card-body text-center">
-                    <p class="text-dark">No hay comentarios guardados</p>
-                    <a href="/comments/add" class="text-dark">Crear uno</a>
-                </div>
-                {{/each}}
-        
+
+        {{#each links}}
+        <div class="card-comment">
+            <div class="text-comments">
+                <h3 class="card-title text-uppercase" style="z-index: 10;">
+                    {{tittle}}
+                </h3>
+                <p class="m-2">{{description}}</p>
+                <p>{{timeago created_at}}</p>
+                <a href="/comments/delete/{{id}}" class="btn btn-danger">Borrar comentario</a>
+                <a href="/comments/edit/{{id}}" class="btn btn-secondary">Editar</a>
+            </div>
+
+        </div>
+        {{else}}
+        <div class="card card-body text-center">
+            <p class="text-dark">No hay comentarios guardados</p>
+            <a href="/comments/add" class="text-dark">Crear uno</a>
+        </div>
+        {{/each}}
+
     </div>
 </div>
